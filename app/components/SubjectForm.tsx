@@ -10,7 +10,7 @@ export default function SubjectForm() {
   const [courses, setCourses] = useState<Course[]>([]);
   const [formData, setFormData] = useState({
     name: '',
-    semester: '',
+   
     courseId: '',
     facultyId: '', // Optional
   });
@@ -37,14 +37,14 @@ export default function SubjectForm() {
 const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
   
-    if (!formData.name || !formData.semester || !formData.courseId) {
+    if (!formData.name || !formData.courseId) {
       setMessage("Name, Semester, and Course are required!");
       return;
     }
   
-    const body: any = {
+    const body= {
       name: formData.name,
-      semester: parseInt(formData.semester, 10),
+     
       courseId: parseInt(formData.courseId, 10),
     };
   
@@ -69,7 +69,7 @@ const handleSubmit = async (e: React.FormEvent) => {
       const responseData = await res.json();
       console.log("Server response:", responseData);
       setMessage("Subject created successfully!");
-      setFormData({ name: '', semester: '', courseId: '', facultyId: '' });
+      setFormData({ name: '',  courseId: '', facultyId: '' });
     } catch (error) {
       console.error("Error sending request:", error);
       setMessage(error.message);
@@ -98,23 +98,7 @@ const handleSubmit = async (e: React.FormEvent) => {
         />
       </div>
 
-      <div>
-        <label htmlFor="semester" className="block mb-2">Semester:</label>
-        <select
-          id="semester"
-          name="semester"
-          value={formData.semester}
-          onChange={handleChange}
-          className="w-full p-2 border rounded"
-          required
-        >
-          <option value="">Select Semester</option>
-          {[1, 2, 3, 4, 5, 6, 7, 8].map(sem => (
-            <option key={sem} value={sem}>Semester {sem}</option>
-          ))}
-        </select>
-      </div>
-
+      
       <div>
         <label htmlFor="courseId" className="block mb-2">Course:</label>
         <select

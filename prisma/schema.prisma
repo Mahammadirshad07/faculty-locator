@@ -16,13 +16,14 @@ datasource db {
 model Course {
   id       Int       @id @default(autoincrement())
   name     String
+  semester Int
   subjects Subject[]
 }
 
 model Subject {
   id        Int     @id @default(autoincrement())
   name      String
-  semester  Int
+  
   courseId  Int
   course    Course  @relation(fields: [courseId], references: [id])
   faculty   Faculty? @relation(fields: [facultyId], references: [id])

@@ -12,23 +12,17 @@ export async function POST(request: NextRequest) {
     const body = await request.json();
     console.log("Received body:", body);
 
-    if (!body.name || !body.semester || !body.courseId) {
+    if (!body.name || !body.courseId) {
       return new Response(
         JSON.stringify({ error: "Missing required fields" }),
         { status: 400 }
       );
     }
 
-    // const subjectData: any = {
-    //   name: body.name,
-    //   semester: Number(body.semester),
-    //   course: { connect: { id: Number(body.courseId) } },
-    // };
-
     const subject = await prisma.subject.create({
       data: {
         name: body.name,
-        semester: parseInt(body.semester),
+       
         course: {
           connect: {
             id: body.courseId,

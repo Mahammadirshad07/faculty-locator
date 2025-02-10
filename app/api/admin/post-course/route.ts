@@ -2,15 +2,16 @@
   import prisma from "@/lib/prisma";
   export async function POST(request: NextRequest) {
     try {
-      const { name } = await request.json();
-      const course = await prisma.course.create({
+      const body = await request.json();
+      await prisma.course.create({
         data: {
-          name: name,
+          name: body.name,
+          semester:parseInt(body.semester),
         },
       });
 
-      return NextResponse.json({ message: "subject created succesfully" });
+      return NextResponse.json({ message: "course created succesfully" });
     } catch (error) {
-      return NextResponse.json({ error: "error:couldnt create subject" });
+      return NextResponse.json({ error});
     }
   }
