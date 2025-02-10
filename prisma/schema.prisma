@@ -32,6 +32,7 @@ model Subject {
 model Faculty {
   id   Int    @id @default(autoincrement())
   name String
+  phoneNumber  String @unique
 
   hallNumber String
   building   String

@@ -16,6 +16,7 @@ export default function FacultyForm() {
     hallNumber: "",
     building: "",
     subjectId: "",
+    phoneNumber:"",
   });
   const [message, setMessage] = useState("");
 
@@ -49,11 +50,12 @@ export default function FacultyForm() {
           hallNumber: "",
           building: "",
           subjectId: "",
+          phoneNumber:"",
         });
       } else {
         setMessage("Failed to create faculty");
       }
-    } catch (error) {
+    } catch (error){
       setMessage("Error creating faculty");
     }
   };
@@ -81,6 +83,17 @@ export default function FacultyForm() {
           onChange={handleChange}
           className="w-full p-2 border rounded"
           required
+        />
+      </div>
+      <div>
+        <label htmlFor="phoneNumber" className="block mb-2">Phone Number</label>
+        <input type="number" 
+        id="phoneNumber"
+        name="phoneNumber"
+        value={formData.phoneNumber}
+        onChange={handleChange}
+        className="w-full p-2 border rounded"
+        required
         />
       </div>
 
