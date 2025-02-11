@@ -1,6 +1,6 @@
 import prisma from "@/lib/prisma";
 import { NextRequest, NextResponse } from "next/server";
-
+//to get faculties by subjectId
 export async function GET(request: NextRequest) {
   const { searchParams } = new URL(request.url);
   const subjectId = searchParams.get("subjectId");

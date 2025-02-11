@@ -1,9 +1,10 @@
-import Image from "next/image";
+"use client"
+import React from "react";
 
-export default function Home() {
+
+import BackgroundLinesDemo from "./components/Hero";
+export default function App() {
   return (
-   <div className="pl-10 pt-10 flex justify-center">
-    Welcome to faculty locator
-   </div>
+    <BackgroundLinesDemo/>
   );
 }
