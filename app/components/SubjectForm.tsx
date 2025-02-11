@@ -48,9 +48,9 @@ const handleSubmit = async (e: React.FormEvent) => {
       courseId: parseInt(formData.courseId, 10),
     };
   
-    if (formData.facultyId) {
-      body.facultyId = parseInt(formData.facultyId, 10);
-    }
+    // if (formData.facultyId) {
+    //   body.facultyId = parseInt(formData.facultyId, 10);
+    // }
   
     console.log("Sending request with body:", body);
   
@@ -72,7 +72,10 @@ const handleSubmit = async (e: React.FormEvent) => {
       setFormData({ name: '',  courseId: '', facultyId: '' });
     } catch (error) {
       console.error("Error sending request:", error);
-      setMessage(error.message);
+      if (error instanceof Error) {
+        setMessage(error.message);
+      }
+      
     }
   };
   

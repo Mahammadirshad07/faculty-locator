@@ -56,7 +56,10 @@ export default function FacultyForm() {
         setMessage("Failed to create faculty");
       }
     } catch (error){
-      setMessage("Error creating faculty");
+      if (error instanceof Error) {
+        setMessage(error.message);
+      }
+     
     }
   };
 

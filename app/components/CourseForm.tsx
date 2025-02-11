@@ -42,7 +42,10 @@ export default function CourseForm() {
         setMessage('Failed to create course');
       }
     } catch (error) {
-      setMessage('Error creating course');
+      if (error instanceof Error) {
+        setMessage(error.message);
+      }
+     
     }
   };
 
