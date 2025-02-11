@@ -1,7 +1,7 @@
 "use client";
 
-import { useEffect, useState } from "react";
-import { useRouter } from "next/navigation";
+import { useEffect, useState,Suspense } from "react";
+import { useRouter, useSearchParams } from "next/navigation";
 import { Faculty } from "@prisma/client";
 import { Card, CardContent, CardHeader, CardTitle, CardFooter } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
@@ -9,9 +9,10 @@ import { Skeleton } from "@/components/ui/skeleton";
 import { ArrowLeft, Phone, Building, MapPin } from 'lucide-react';
 import { motion } from "framer-motion";
 
-export default function FacultyDetails({ params }: { params: { id: string } }) {
+export default function FacultyDetails() {
+  const searchParams = useSearchParams();
   const router = useRouter();
-  const { id } = params;
+  const  id  = searchParams.get("id");
   const [faculty, setFaculty] = useState<Faculty | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
@@ -19,7 +20,7 @@ export default function FacultyDetails({ params }: { params: { id: string } }) {
   useEffect(() => {
     async function fetchFaculty() {
       try {
-        const response = await fetch(`/api/faculty/${id}`);
+        const response = await fetch(`/api/faculty/get-details?id=${id}`);
         if (!response.ok) throw new Error("Faculty not found");
         const data = await response.json();
         setFaculty(data);
@@ -40,6 +41,7 @@ export default function FacultyDetails({ params }: { params: { id: string } }) {
   const MotionCard = motion(Card);
 
   return (
+    <Suspense fallback={<p>Loading faculty details...</p>}>
     <div className="min-h-screen bg-gradient-to-br from-indigo-100 via-purple-100 to-pink-100 p-8 flex items-center justify-center">
       <MotionCard 
         className="w-full max-w-md"
@@ -109,5 +111,6 @@ export default function FacultyDetails({ params }: { params: { id: string } }) {
         </CardFooter>
       </MotionCard>
     </div>
+    </Suspense>
   );
 }

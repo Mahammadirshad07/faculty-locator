@@ -223,7 +223,7 @@ export default function CourseSelection() {
                                 </p>
                               </div>
                               <Button
-                                onClick={() => router.push(`/faculty/${f.id}`)}
+                                onClick={() => router.push(`/faculty?${f.id}`)}
                                 variant="secondary"
                                 className="ml-4 bg-white text-black hover:bg-opacity-90"
                               >
