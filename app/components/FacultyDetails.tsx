@@ -6,7 +6,7 @@ import { Faculty } from "@prisma/client";
 import { Card, CardContent, CardHeader, CardTitle, CardFooter } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Skeleton } from "@/components/ui/skeleton";
-import { ArrowLeft, Phone, Building, MapPin } from 'lucide-react';
+import { ArrowLeft, Phone, Building, MapPin,User } from 'lucide-react';
 import { motion } from "framer-motion";
 
 export default function FacultyDetails() {
@@ -16,7 +16,7 @@ export default function FacultyDetails() {
   const [faculty, setFaculty] = useState<Faculty | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
-
+ 
   useEffect(() => {
     async function fetchFaculty() {
       try {
@@ -72,7 +72,7 @@ export default function FacultyDetails() {
             >
               <div className="space-y-4">
                 <div className="flex items-center space-x-2">
-                  <Phone className="text-purple-600" />
+                  <User className="text-purple-600" />
                   <p className="text-lg">
                     <span className="font-semibold">Name:</span> {faculty.name}
                   </p>

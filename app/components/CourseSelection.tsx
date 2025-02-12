@@ -138,9 +138,9 @@ export default function CourseSelection() {
                           setSemester(sem);
                           updateUrl("semester", sem.toString());
                         }}
-                        className={`h-32 text-xl font-bold text-white bg-gradient-to-br ${gradientColors[index % gradientColors.length]} hover:shadow-lg transition-all duration-300 transform hover:scale-105`}
+                        className={`h-32 text-sm sm:text-xl font-bold text-white bg-gradient-to-br ${gradientColors[index % gradientColors.length]} hover:shadow-lg transition-all duration-300 transform hover:scale-105`}
                       >
-                        <GraduationCap className="mr-2 h-6 w-6" />
+                        <GraduationCap className=" h-6 w-6" />
                         Semester {sem}
                       </Button>
                     ))}
@@ -199,7 +199,7 @@ export default function CourseSelection() {
                   </div>
                 )}
                 {currentStep === 3 && (
-                  <div className="grid gap-4">
+                  <div className="grid gap-1">
                     {loading ? (
                       Array(3).fill(0).map((_, index) => (
                         <Skeleton key={index} className="h-24 w-full" />
@@ -212,19 +212,19 @@ export default function CourseSelection() {
                           animate={{ opacity: 1, y: 0 }}
                           transition={{ duration: 0.3, delay: index * 0.1 }}
                         >
-                          <Card className={`hover:shadow-xl transition-all duration-300 bg-gradient-to-r ${gradientColors[index % gradientColors.length]} text-white `}>
-                            <CardContent className="flex items-center p-6">
+                          <Card className={`hover:shadow-xl transition-all duration-300 bg-gradient-to-r ${gradientColors[index % gradientColors.length]} bg-black  text-white `}>
+                            <CardContent className="flex items-center p-4">
                               <div className="flex-shrink-0 mr-6">
-                                <User className="h-16 w-16" />
+                                <User className="h-10 w-10 sm:h-16 sm:w-16" />
                               </div>
                               <div className="flex-grow">
-                                <h3 className="text-2xl font-bold mb-2">{f.name}</h3>
+                                <h3 className="text-sm sm:text-2xl font-bold mb-2">{f.name}</h3>
                                 <p className="text-lg flex items-center">
                                   <Building className="h-5 w-5 mr-2" /> {f.building}
                                 </p>
                               </div>
                               <Button
-                                onClick={() => router.push(`/faculty?${f.id}`)}
+                                onClick={() => router.push(`/faculty?id=${f.id}`)}
                                 variant="secondary"
                                 className="ml-4 bg-white text-black hover:bg-opacity-90"
                               >
