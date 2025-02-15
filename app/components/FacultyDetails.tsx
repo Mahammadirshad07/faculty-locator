@@ -86,13 +86,13 @@ export default function FacultyDetails() {
                 <div className="flex items-center space-x-2">
                   <Building className="text-purple-600" />
                   <p className="text-lg">
-                    <span className="font-semibold">Building:</span> {faculty.building}
+                    <span className="font-semibold">Block:</span> {faculty.building}
                   </p>
                 </div>
                 <div className="flex items-center space-x-2">
                   <MapPin className="text-purple-600" />
                   <p className="text-lg">
-                    <span className="font-semibold">Hall Number:</span> {faculty.hallNumber}
+                    <span className="font-semibold">Floor:</span> {faculty.hallNumber}
                   </p>
                 </div>
               </div>

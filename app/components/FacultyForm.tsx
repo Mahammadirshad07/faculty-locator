@@ -102,7 +102,7 @@ export default function FacultyForm() {
 
       <div>
         <label htmlFor="hallNumber" className="block mb-2">
-          Hall Number:
+        Floor
         </label>
         <input
           type="text"
@@ -117,7 +117,7 @@ export default function FacultyForm() {
 
       <div>
         <label htmlFor="building" className="block mb-2">
-          Building:
+          Block:
         </label>
         <input
           type="text"
